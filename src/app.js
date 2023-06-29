@@ -1,17 +1,19 @@
-'use strict'
+const express = require('express');
+const expressHandlebars = require('express-handlebars');
+const path = require('path');
 
-const express = require('express')
-const app = express()
-const port = 8080
+const PORT = 8081;
+const app = express();
+const handlebars = expressHandlebars.create();
+
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views/'));
+
+app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`);
+});
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+    res.send('Hello World!');
+});
