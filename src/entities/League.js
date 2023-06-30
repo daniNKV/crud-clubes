@@ -8,6 +8,7 @@ module.exports = class League {
         founded,
         startDate,
         endDate,
+        teams,
     ) {
         this.id = id;
         this.name = name;
@@ -17,5 +18,6 @@ module.exports = class League {
         this.founded = founded;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.teams = teams;
     }
-}
+};
