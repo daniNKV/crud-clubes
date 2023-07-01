@@ -1,6 +1,9 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+const path = require('path');
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
-const path = require('path');
+const routes = require('./routes');
+const configureDependencyInjection = require('./config/di');
 
 const PORT = 8081;
 const app = express();
@@ -10,10 +13,9 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views/'));
 
+const container = configureDependencyInjection();
 app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`);
+    console.log(`Listening on port ${PORT}`);
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.use('/', routes);
