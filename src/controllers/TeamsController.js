@@ -13,22 +13,28 @@ module.exports = class TeamController {
 
     async getTeam(req, res) {
         const { id } = req.params;
-        const team = await this.teamsServices.getById(id);
+        const team = await this.teamsServices.getById(Number(id));
         res.render('team', {
             layout: 'base',
             team,
         });
     }
 
-    async saveTeam(req, res) {
+    async createTeam(req, res) {
         const team = req.body;
-        await this.teamsServices.add(team);
+        await this.teamsServices.create(team);
+        res.redirect('/teams');
+    }
+
+    async editTeam(req, res) {
+        const team = req.body;
+        await this.teamsServices.update(team);
         res.redirect('/teams');
     }
 
     async deleteTeam(req, res) {
         const { id } = req.params;
-        await this.teamsServices.delete(id);
+        await this.teamsServices.delete(Number(id));
         res.redirect('/teams');
     }
 };

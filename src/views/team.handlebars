@@ -1,0 +1,48 @@
+<div class="container">
+    {{#with team}}
+        <div class="tile is-ancestor has-text-white">
+            <div class="tile is-vertical is-8">
+                <div class="tile">
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification has-background-grey">
+                            <p class="title">{{name}}</p>
+                            <p class="subtitle">{{shortName}}</p>
+                        </article>
+                        <article class="tile is-child notification has-background-grey">
+                            <p class="title">...tiles</p>
+                            <p class="subtitle">Bottom tile</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification has-background-white has-text-black">
+                            <p class="title">{{name}}</p>
+                            <figure class="image is-4by3">
+                                <img src="{{crestUrl}}" alt="{{shortName}} logo">
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification has-background-grey">
+                        <p class="title">Wide tile</p>
+                        <p class="subtitle">Aligned with the right tile</p>
+                        <div class="content">
+                            <!-- Content -->
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child notification has-background-grey">
+                    <div class="content">
+                        <p class="title">Tall tile</p>
+                        <p class="subtitle">With even more content</p>
+                        <div class="content">
+                            <!-- Content -->
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    {{/with}}
+</div>
