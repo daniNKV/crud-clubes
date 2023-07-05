@@ -1,34 +1,31 @@
-<div class="container">
-    <table class="table table is-hoverable table is-fullwidth">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>TLA</th>
-                <th>Team</th>
-                <th>Founded</th>
-                <th>Crest</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each teams}}
-            <tr>
-                <th>{{id}}</th>
-                <td>{{tla}}</td>
-                <td>{{name}}</td>
-                <td>{{founded}}</td>
-                <td><img src={{crestUrl}} height="40" width="40" alt="Manchester United"></td>
-                <td>
-                    <a href="/teams/{{id}}" class="button is-small is-link">View</a>
-                    <a href="/teams/{{id}}/edit" class="button is-small is-warning">Edit</a>
-                    <form action="/teams/{{id}}/delete" method="POST" style="display: inline-block">
-                        <button class="button is-small is-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            {{/each}}
+<table class="table table is-hoverable container">
+    <thead>
+    <tr>
+        <th class="is-flex ">ID</th>
+        <th>TLA</th>
+        <th>Team</th>
+        <th>Founded</th>
+        <th>Crest</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each teams}}
+        <tr>
+            <th>{{id}}</th>
+            <td>{{tla}}</td>
+            <td>{{shortName}}</td>
+            <td>{{founded}}</td>
+            <td><img src="{{crestUrl}}" height="40" width="40" alt="Manchester United" onerror="this.onerror=null; this.src='https://www.svgrepo.com/show/221430/no-photo.svg'"></td>
+            <td>
+                <a href="/teams/{{id}}" class="button is-small is-link">View</a>
+                <a href="/teams/edit/{{id}}" class="button is-small is-warning">Edit</a>
+                <form action="/teams/delete/{{id}}" method="POST" style="display: inline-block">
+                    <button class="button is-small is-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    {{/each}}
 
-            </tbody>
-    </table>
-
-</div>
+    </tbody>
+</table>
