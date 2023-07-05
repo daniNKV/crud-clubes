@@ -36,4 +36,11 @@ module.exports = class TeamsRepositoryJSON {
         const fileData = JSON.stringify(data, null, 2);
         fs.writeFileSync(this.path, fileData, 'utf8');
     }
+
+    delete(id) {
+        const data = this.readFileData();
+        const index = data.findIndex((item) => item.id === id);
+        data.splice(index, 1);
+        this.writeFileData(data);
+    }
 };
