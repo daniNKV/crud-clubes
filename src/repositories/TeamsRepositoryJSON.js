@@ -1,4 +1,5 @@
 const fs = require('fs');
+const Team = require('../entities/Team.js');
 
 module.exports = class TeamsRepositoryJSON {
     constructor(path) {
@@ -6,7 +7,7 @@ module.exports = class TeamsRepositoryJSON {
     }
 
     getAll() {
-        return this.readFileData();
+        return this.readFileData().map((item) => new Team(item));
     }
 
     getById(id) {

@@ -1,5 +1,5 @@
 module.exports = class Team {
-    constructor(
+    constructor({
         id,
         Area,
         name,
@@ -14,7 +14,7 @@ module.exports = class Team {
         clubColors,
         venue,
         lastUpdated,
-    ) {
+    }) {
         this.id = id;
         this.name = name;
         this.shortName = shortName;
