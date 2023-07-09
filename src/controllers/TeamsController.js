@@ -20,13 +20,29 @@ module.exports = class TeamController {
         });
     }
 
-    async createTeam(req, res) {
+    async editTeam(req, res) {
+        const { id } = req.params;
+        let team;
+        if (id === -1) {
+            team = await this.teamsServices.getById(Number(id));
+            res.render('form', {
+                layout: 'base',
+                team,
+            });
+        } else {
+            res.render('form', {
+                layout: 'base',
+            });
+        }
+    }
+
+    async addTeam(req, res) {
         const team = req.body;
         await this.teamsServices.create(team);
         res.redirect('/teams');
     }
 
-    async editTeam(req, res) {
+    async updateTeam(req, res) {
         const team = req.body;
         await this.teamsServices.update(team);
         res.redirect('/teams');
