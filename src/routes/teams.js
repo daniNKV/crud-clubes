@@ -7,7 +7,6 @@ function configureTeamsRoutes(container) {
 
     router.get('/teams/:id', teamsController.getTeam.bind(teamsController));
 
-    //router.get('/teams/edit', teamsController.editTeam.bind(teamsController));
     router.get('/teams/edit/:id', teamsController.editTeam.bind(teamsController));
 
     router.post('/teams/create/', teamsController.addTeam.bind(teamsController));

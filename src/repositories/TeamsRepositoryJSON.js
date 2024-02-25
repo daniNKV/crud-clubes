@@ -1,6 +1,5 @@
 const fs = require('fs');
 const Team = require('../entities/Team.js');
-const { raw } = require('express');
 
 module.exports = class TeamsRepositoryJSON {
     constructor(path) {
