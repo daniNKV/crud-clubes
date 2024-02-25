@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Team = require('../entities/Team.js');
+const { raw } = require('express');
 
 module.exports = class TeamsRepositoryJSON {
     constructor(path) {
@@ -16,7 +17,7 @@ module.exports = class TeamsRepositoryJSON {
         const data = this.readFileData();
         const rawTeam = data.find((item) => item.id === id);
         if (!rawTeam) throw new Error('Team not found');
-        return new Team({ rawTeam });
+        return new Team(rawTeam);
     }
 
     add(team) {

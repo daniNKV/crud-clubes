@@ -22,16 +22,12 @@ module.exports = class TeamController {
 
     async editTeam(req, res) {
         const { id } = req.params;
-        let team;
-        if (id === -1) {
-            team = await this.teamsServices.getById(Number(id));
+        if (Number(id) === -1) res.render('form', { layout: 'base' });
+        else {
+            const team = await this.teamsServices.getById(Number(id));
             res.render('form', {
                 layout: 'base',
                 team,
-            });
-        } else {
-            res.render('form', {
-                layout: 'base',
             });
         }
     }
