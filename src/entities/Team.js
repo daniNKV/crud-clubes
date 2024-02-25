@@ -1,7 +1,7 @@
 module.exports = class Team {
     constructor({
         id,
-        Area,
+        area,
         name,
         shortName,
         tla,
@@ -28,6 +28,6 @@ module.exports = class Team {
         this.clubColors = clubColors;
         this.venue = venue;
         this.lastUpdated = lastUpdated;
-        this.area = Area;
+        this.area = area.name;
     }
 };
