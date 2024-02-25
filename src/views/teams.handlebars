@@ -21,10 +21,13 @@
                 <td>{{shortName}}</td>
                 <td>{{founded}}</td>
                 <td><img src="{{crestUrl}}" height="40" width="40" alt="Manchester United" onerror="this.onerror=null; this.src='https://www.svgrepo.com/show/221430/no-photo.svg'"></td>
-                <td>
+                
+                <td class="is-flex">
                     <a href="/teams/{{id}}" class="button is-small is-link">View</a>
                     <a href="/teams/edit/{{id}}" class="button is-small is-warning">Edit</a>
-                    <button class="button is-small is-danger modal-trigger">Delete</button>
+                    <form action="/teams/delete/{{id}}" method="POST">
+                        <button class="button is-small is-danger">Delete</a>                    
+                    </form> 
                 </td>
                 
             </tr>
