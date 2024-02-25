@@ -1,8 +1,8 @@
-<section class="container is-fluid">
+<section class="container box">
     <div class="has-text-centered mb-4">
         <a href="/teams/edit/-1" class="button is-primary is-medium">New Team</a>
     </div>
-    <table class="table table is-hoverable container">
+    <table class="table is-fluid is-hoverable container">
         <thead>
         <tr>
             <th class="is-flex ">ID</th>
@@ -22,12 +22,14 @@
                 <td>{{founded}}</td>
                 <td><img src="{{crestUrl}}" height="40" width="40" alt="Manchester United" onerror="this.onerror=null; this.src='https://www.svgrepo.com/show/221430/no-photo.svg'"></td>
                 
-                <td class="is-flex">
-                    <a href="/teams/{{id}}" class="button is-small is-link">View</a>
-                    <a href="/teams/edit/{{id}}" class="button is-small is-warning">Edit</a>
-                    <form action="/teams/delete/{{id}}" method="POST">
-                        <button class="button is-small is-danger">Delete</a>                    
-                    </form> 
+                <td class="">
+                    <div class="is-flex is-justify-content-space-between box">
+                        <a href="/teams/{{id}}" class="button is-small is-link">View</a>
+                        <a href="/teams/edit/{{id}}" class="button is-small is-warning">Edit</a>
+                        <form action="/teams/delete/{{id}}" method="POST">
+                            <button class="button is-small is-danger">Delete</a>                    
+                        </form> 
+                    </div>
                 </td>
                 
             </tr>

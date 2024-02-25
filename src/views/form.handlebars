@@ -11,35 +11,66 @@
                     <label class="label">Area</label>
                     <input class="input" type="text"  placeholder="Area" value="{{team.area}}">
                 </div> 
-                <label class="label pt-4">Name</label>
-                <input class="input" type="text"  placeholder="Name" value="{{team.name}}">
-                <label class="label pt-4">Short Name</label>
-                <input class="input" type="text"  placeholder="Short name" value="{{team.shortName}}">
-                <label class="label pt-4">TLA</label>
-                <input class="input" type="text"  placeholder="TLA" value="{{team.tla}}">
-                <label class="label pt-4">Address</label>
-                <input class="input" type="text"  placeholder="Address" value="{{team.address}}">
-                <label class="label pt-4">Phone</label>
-                <input class="input" type="text"  placeholder="Phone" value="{{team.phone}}">
-                <label class="label pt-4">Website</label>
-                <input class="input" type="text"  placeholder="Website" value="{{team.website}}">
-                <label class="label pt-4">Email</label>
-                <input class="input" type="text"  placeholder="Email" value="{{team.email}}">
-                <label class="label pt-4">Founded</label>
-                <input class="input" type="number"  placeholder="Founded" value="{{team.founded}}">
-                <label class="label pt-4">Club Colors</label>
-                <input class="input" type="text"  placeholder="Club Colors" value="{{team.clubColors}}">
-                <label class="label pt-4">Crest</label>
-                <div class="file is-boxed">
-                    <label class="file-label">
-                        <input class="file-input" type="file"  placeholder="Crest" value="{{team.cresturl}}">
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                choose a file…
-                    </label>  
+                <div class="field">
+                    <label class="label">Area ID</label>
+                    <input type="text" class="input" placeholder="Area ID" value="">
+                </div>
+                <div class="field">
+                    <label class="label">Name</label>
+                    <input class="input" type="text"  placeholder="Name" value="{{team.name}}">
+                </div>
+
+                <div class="field">
+                    <label class="label">Short Name</label>
+                    <input class="input" type="text"  placeholder="Short name" value="{{team.shortName}}">
+                </div>
+
+                <div class="field">
+                    <label class="label">TLA</label>    
+                    <input class="input" type="text"  placeholder="TLA" value="{{team.tla}}">
+                </div>
+                <div class="field">
+                    <label class="label">Address</label>
+                    <input class="input" type="text"  placeholder="Address" value="{{team.address}}">
+                    
+                </div>
+                <div class="field">
+                    <label class="label">Phone</label>
+                    <input class="input" type="text"  placeholder="Phone" value="{{team.phone}}">
+                    
+                </div>
+                <div class="field">
+                    <label class="label">Website</label>
+                    <input class="input" type="text"  placeholder="Website" value="{{team.website}}">
+                    
+                </div>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <input class="input" type="text"  placeholder="Email" value="{{team.email}}">
+                    
+                </div>
+                <div class="field">
+                    <label class="label">Founded</label>
+                    <input class="input" type="number"  placeholder="Founded" value="{{team.founded}}">
+                    
+                </div>
+                <div class="field">
+                    <label class="label ">Club Colors</label>
+                    <input class="input" type="text"  placeholder="Club Colors" value="{{team.clubColors}}">                    
+                </div>
+                <div class="field">
+                    <label class="label ">Crest</label>
+                    <div class="file is-boxed">
+                        <label class="file-label">
+                            <input class="file-input" type="file"  placeholder="Crest" value="{{team.cresturl}}">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                    choose a file…
+                        </label>  
+                    </div>
                 </div>
                 <div class="control pt-4">
                     <button class="button is-link">submit</button>
