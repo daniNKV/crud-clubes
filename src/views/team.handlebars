@@ -5,17 +5,17 @@
                 <div class="tile">
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification has-background-grey">
-                            <p class="title">{{name}}</p>
-                            <p class="subtitle">{{shortName}}</p>
+                            <p class="subtitle"><strong>Short Name: </strong>{{shortName}}</p>
+                            <p class="subtitle"><strong>TLA: </strong>{{tla}}</p>
                         </article>
                         <article class="tile is-child notification has-background-grey">
-                            <p class="title">...tiles</p>
-                            <p class="subtitle">Bottom tile</p>
+                            <p class="subtitle"><strong>Since</strong> {{founded}}</p>
+                            <p class="subtitle"><strong>Colors:</strong> {{clubColors}}</p>
                         </article>
                     </div>
                     <div class="tile is-parent">
                         <article class="tile is-child notification has-background-white has-text-black">
-                            <p class="title">{{name}}</p>
+                            <p class="title has-text-centered">{{name}}</p>
                             <figure class="image is-4by3">
                                 <img src="{{crestUrl}}" alt="{{shortName}} logo">
                             </figure>
@@ -24,9 +24,11 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child notification has-background-grey">
-                        <p class="title">Wide tile</p>
-                        <p class="subtitle">Aligned with the right tile</p>
                         <div class="content">
+                        <p class="subtitle"><strong>Website: </strong>{{website}}</p>
+                        <p class="subtitle"><strong>Email: </strong>{{email}}</p>
+                        <p class="subtitle"><strong>Address: </strong>{{address}}</p>
+                        <p class="subtitle"><strong>Phone: </strong>{{phone}}<p>
                             <!-- Content -->
                         </div>
                     </article>
@@ -35,8 +37,7 @@
             <div class="tile is-parent">
                 <article class="tile is-child notification has-background-grey">
                     <div class="content">
-                        <p class="title">Tall tile</p>
-                        <p class="subtitle">With even more content</p>
+                        <p class="subtitle"><strong>Stadium: </strong>{{venue}}</p>
                         <div class="content">
                             <!-- Content -->
                         </div>
