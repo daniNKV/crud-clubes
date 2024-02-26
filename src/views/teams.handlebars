@@ -5,24 +5,24 @@
     <table class="table is-fluid is-hoverable container">
         <thead>
         <tr>
-            <th class="is-flex ">ID</th>
-            <th>TLA</th>
-            <th>Team</th>
-            <th>Founded</th>
-            <th>Crest</th>
-            <th>Actions</th>
+            <th class="has-text-centered" >ID</th>
+            <th class="has-text-centered">TLA</th>
+            <th class="has-text-centered">Team</th>
+            <th class="has-text-centered">Founded</th>
+            <th class="has-text-centered">Crest</th>
+            <th class="has-text-centered">Actions</th>
         </tr>
         </thead>
         <tbody>
         {{#each teams}}
             <tr>
-                <th>{{id}}</th>
-                <td>{{tla}}</td>
-                <td>{{shortName}}</td>
-                <td>{{founded}}</td>
-                <td><img src="{{crestUrl}}" height="40" width="40" alt="Manchester United" onerror="this.onerror=null; this.src='https://www.svgrepo.com/show/221430/no-photo.svg'"></td>
+                <th class="has-text-centered">{{id}}</th>
+                <td class="has-text-centered">{{tla}}</td>
+                <td class="has-text-centered">{{shortName}}</td>
+                <td class="has-text-centered">{{founded}}</td>
+                <td class="has-text-centered"><img src="{{crestUrl}}" height="40" width="40" alt="Manchester United" onerror="this.onerror=null; this.src='https://www.svgrepo.com/show/221430/no-photo.svg'"></td>
                 
-                <td class="">
+                <td>
                     <div class="is-flex is-justify-content-space-between box">
                         <a href="/teams/{{id}}" class="button is-small is-link">View</a>
                         <a href="/teams/edit/{{id}}" class="button is-small is-warning">Edit</a>
