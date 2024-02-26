@@ -4,7 +4,7 @@
             {{#if team}}
                 <h1 class="title">Editing team with ID {{ team.id }}</h1>
             {{else}}
-                <h1 class="title">Creating New Team</h1>
+                <h1 class="title">Create a new team</h1>
             {{/if}}
             <form method="POST" action="/teams/save" enctype="multipart/form-data">
                 <div class="field">
@@ -62,7 +62,7 @@
                     <label class="label ">Crest</label>
                     <div class="file is-boxed">
                         <label class="file-label">
-                            <input class="file-input" type="file" placeholder="Crest" value="{{team.cresturl}}">
+                            <input class="file-input" type="file" placeholder="Crest">
                             <span class="file-cta">
                                 <span class="file-icon">
                                     <i class="fas fa-upload"></i>
