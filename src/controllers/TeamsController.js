@@ -1,6 +1,7 @@
 module.exports = class TeamController {
-    constructor(teamsServices) {
+    constructor(teamsServices, uploadMiddleware) {
         this.teamsServices = teamsServices;
+        this.uploadMiddleware = uploadMiddleware;
     }
 
     async getTeams(req, res) {
@@ -22,7 +23,7 @@ module.exports = class TeamController {
 
     async editTeam(req, res) {
         const { id } = req.params;
-        if (!id) res.render('form', { layout: 'base' });
+        if (Number(id) === -1) res.render('form', { layout: 'base' });
         else {
             const team = await this.teamsServices.getById(Number(id));
             res.render('form', {
@@ -32,15 +33,18 @@ module.exports = class TeamController {
         }
     }
 
-    async addTeam(req, res) {
+    async saveTeam(req, res) {
         const team = req.body;
-        await this.teamsServices.create(team);
-        res.redirect('/teams');
-    }
+        if (req.file) {
+            const { path } = req.file;
+            team.crestUrl = path;
+        }
 
-    async updateTeam(req, res) {
-        const team = req.body;
-        await this.teamsServices.update(team);
+        if (team.id) {
+            await this.teamsServices.update(team);
+        } else {
+            await this.teamsServices.create(team);
+        }
         res.redirect('/teams');
     }
 

@@ -20,10 +20,13 @@ module.exports = class TeamsRepositoryJSON {
     }
 
     add(team) {
-        if (this.getById(team.id)) throw new Error('Team already exists');
-        const data = this.readFileData();
-        data.push(team);
-        this.writeFileData(data);
+        try {
+            if (this.getById(team.id)) throw new Error('Team already exists');
+        } catch {
+            const data = this.readFileData();
+            data.push(team);
+            this.writeFileData(data);
+        }
     }
 
     update(team) {
