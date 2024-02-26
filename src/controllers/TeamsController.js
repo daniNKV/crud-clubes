@@ -1,7 +1,6 @@
 module.exports = class TeamController {
-    constructor(teamsServices, uploadMiddleware) {
+    constructor(teamsServices) {
         this.teamsServices = teamsServices;
-        this.uploadMiddleware = uploadMiddleware;
     }
 
     async getTeams(req, res) {
@@ -37,9 +36,10 @@ module.exports = class TeamController {
         const team = req.body;
         if (req.file) {
             const { path } = req.file;
+            console.log(path)
             team.crestUrl = path;
         }
-
+        console.log(team)
         if (team.id) {
             await this.teamsServices.update(team);
         } else {
