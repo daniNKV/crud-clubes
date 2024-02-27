@@ -2,6 +2,13 @@
     <div class="has-text-centered mb-4">
         <a href="/teams/edit/-1" class="button is-primary is-medium">New Team</a>
     </div>
+
+    {{#each messages}}
+        <div class="notification is-success has-text-centered">
+            {{this}}
+        </div>
+    {{/each}} 
+    
     <table class="table is-fluid is-hoverable container">
         <thead>
         <tr>

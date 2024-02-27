@@ -5,10 +5,13 @@ module.exports = class TeamController {
 
     async getTeams(req, res) {
         const teams = await this.teamsServices.getAll();
+        const { messages } = req.session;
         res.render('teams', {
             layout: 'base',
             teams,
+            messages,
         });
+        req.session.messages = [];
     }
 
     async getTeam(req, res) {
@@ -22,8 +25,9 @@ module.exports = class TeamController {
 
     async editTeam(req, res) {
         const { id } = req.params;
-        if (Number(id) === -1) res.render('form', { layout: 'base' });
-        else {
+        if (Number(id) === -1) {
+            res.render('form', { layout: 'base' });
+        } else {
             const team = await this.teamsServices.getById(Number(id));
             res.render('form', {
                 layout: 'base',
@@ -40,8 +44,10 @@ module.exports = class TeamController {
         }
         if (team.id) {
             await this.teamsServices.update(team);
+            req.session.messages = ['Team updated successfully'];
         } else {
             await this.teamsServices.create(team);
+            req.session.messages = ['Team created successfully'];
         }
         res.redirect('/teams');
     }

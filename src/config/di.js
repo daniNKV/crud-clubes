@@ -1,9 +1,9 @@
+const cookieSession = require('cookie-session');
 const {
     default: DIContainer,
     object,
     use,
     factory,
-// eslint-disable-next-line import/no-extraneous-dependencies
 } = require('rsdi');
 const path = require('path');
 const multer = require('multer');
@@ -24,9 +24,17 @@ function configureMulter() {
     return multer({ storage });
 }
 
+function configureSession() {
+    return cookieSession({
+        name: 'session',
+        keys: ['key1', 'key2'],
+    });
+}
+
 function addCommonDefinitions(container) {
     container.add({
         Multer: factory(configureMulter),
+        Session: factory(configureSession),
     });
 }
 

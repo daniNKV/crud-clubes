@@ -17,6 +17,7 @@ app.use('/public', express.static('public'));
 const container = configureDI();
 const router = configureTeamsRoutes(container);
 
+app.use(container.get('Session'));
 app.use('/', router);
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.listen(PORT, () => {
