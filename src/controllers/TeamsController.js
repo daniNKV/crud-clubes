@@ -36,10 +36,8 @@ module.exports = class TeamController {
         const team = req.body;
         if (req.file) {
             const { path } = req.file;
-            console.log(path)
             team.crestUrl = path;
         }
-        console.log(team)
         if (team.id) {
             await this.teamsServices.update(team);
         } else {

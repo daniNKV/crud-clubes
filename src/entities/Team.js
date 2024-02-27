@@ -28,6 +28,6 @@ module.exports = class Team {
         this.clubColors = clubColors;
         this.venue = venue;
         this.lastUpdated = lastUpdated;
-        this.area = area.name;
+        this.area = area;
     }
 };
