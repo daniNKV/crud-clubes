@@ -1,3 +1,4 @@
+require('dotenv').config();
 const cookieSession = require('cookie-session');
 const {
     default: DIContainer,
@@ -24,6 +25,10 @@ function configureMulter() {
     return multer({ storage });
 }
 
+function configureJSONDatabase() {
+    return process.env.JSON_DB_PATH;
+}
+
 function configureSession() {
     return cookieSession({
         name: 'session',
@@ -33,6 +38,7 @@ function configureSession() {
 
 function addCommonDefinitions(container) {
     container.add({
+        JSONDatabase: factory(configureJSONDatabase),
         Multer: factory(configureMulter),
         Session: factory(configureSession),
     });
@@ -40,8 +46,7 @@ function addCommonDefinitions(container) {
 
 function addTeamsDefinitions(container) {
     container.add({
-        PATH: 'data/teams.db.json',
-        teamsRepository: object(TeamsRepositoryJson).construct(use('PATH')),
+        teamsRepository: object(TeamsRepositoryJson).construct(use('JSONDatabase')),
         teamsServices: object(TeamServices).construct(use('teamsRepository')),
         teamsController: object(TeamsController).construct(
             use('teamsServices'),
