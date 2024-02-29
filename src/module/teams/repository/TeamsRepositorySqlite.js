@@ -1,4 +1,4 @@
-const Team = require('../entities/Team');
+const Team = require('../entity/Team');
 const AbstractTeamRepository = require('./AbstractTeamRepository');
 
 module.exports = class TeamRepositorySqlite extends AbstractTeamRepository {

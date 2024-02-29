@@ -1,5 +1,5 @@
-const Team = require('../../entities/Team');
-const TeamsService = require('../TeamServices');
+const Team = require('../../entity/Team');
+const TeamsService = require('../TeamsService');
 
 const repositoryMock = {
     getAll: jest.fn(),

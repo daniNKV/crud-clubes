@@ -1,12 +1,23 @@
-module.exports = class TeamController {
-    constructor(teamsServices) {
+module.exports = class TeamsController {
+    constructor(teamsServices, uploadMiddleware) {
         this.teamsServices = teamsServices;
+        this.uploadMiddleware = uploadMiddleware;
+        this.BASE_PATH = '/teams';
+    }
+
+    configureRoutes(app) {
+        const ROUTE = this.BASE_PATH;
+        app.get(`${ROUTE}`, this.getTeams.bind(this));
+        app.get(`${ROUTE}/:id`, this.getTeam.bind(this));
+        app.get(`${ROUTE}/edit/:id`, this.editTeam.bind(this));
+        app.post(`${ROUTE}/save`, this.uploadMiddleware.single('crest-file'), this.saveTeam.bind(this));
+        app.post(`${ROUTE}/delete/:id`, this.deleteTeam.bind(this));
     }
 
     async getTeams(req, res) {
         const teams = await this.teamsServices.getAll();
         const { messages } = req.session;
-        res.render('teams', {
+        res.render('teams/view/teams', {
             layout: 'base',
             teams,
             messages,
@@ -17,7 +28,7 @@ module.exports = class TeamController {
     async getTeam(req, res) {
         const { id } = req.params;
         const team = await this.teamsServices.getById(Number(id));
-        res.render('team', {
+        res.render('teams/view/team', {
             layout: 'base',
             team,
         });
@@ -26,10 +37,10 @@ module.exports = class TeamController {
     async editTeam(req, res) {
         const { id } = req.params;
         if (Number(id) === -1) {
-            res.render('form', { layout: 'base' });
+            res.render('teams/view/form', { layout: 'base' });
         } else {
             const team = await this.teamsServices.getById(Number(id));
-            res.render('form', {
+            res.render('teams/view/form', {
                 layout: 'base',
                 team,
             });

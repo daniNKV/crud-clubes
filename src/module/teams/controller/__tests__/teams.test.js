@@ -1,5 +1,5 @@
 const TeamsController = require('../TeamsController.js');
-const Team = require('../../entities/Team.js');
+const Team = require('../../../../entities/Team.js');
 
 const serviceMock = {
     update: jest.fn(),
