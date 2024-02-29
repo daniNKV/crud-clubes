@@ -1,4 +1,5 @@
 require('dotenv').config();
+const SqliteDatabase = require('better-sqlite3');
 const cookieSession = require('cookie-session');
 const {
     default: DIContainer,
@@ -25,8 +26,12 @@ function configureMulter() {
     return multer({ storage });
 }
 
-function configureJSONDatabase() {
-    return process.env.JSON_DB_PATH;
+function configureMainDatabase() {
+    const db = new SqliteDatabase(
+        process.env.SQL_DB_PATH,
+        { verbose: console.log },
+    );
+    return db;
 }
 
 function configureSession() {
@@ -38,7 +43,7 @@ function configureSession() {
 
 function addCommonDefinitions(container) {
     container.add({
-        JSONDatabase: factory(configureJSONDatabase),
+        MainDatabase: factory(configureMainDatabase),
         Multer: factory(configureMulter),
         Session: factory(configureSession),
     });
@@ -46,7 +51,7 @@ function addCommonDefinitions(container) {
 
 function addTeamsDefinitions(container) {
     container.add({
-        teamsRepository: object(TeamsRepositoryJson).construct(use('JSONDatabase')),
+        teamsRepository: object(TeamsRepositoryJson).construct(use('MainDatabase')),
         teamsServices: object(TeamServices).construct(use('teamsRepository')),
         teamsController: object(TeamsController).construct(
             use('teamsServices'),
