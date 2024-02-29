@@ -9,7 +9,7 @@ const {
 } = require('rsdi');
 const path = require('path');
 const multer = require('multer');
-const TeamsRepositoryJson = require('../repositories/TeamsRepositoryJSON.js');
+const TeamsRepositorySqlite = require('../repositories/TeamsRepositorySqlite.js');
 const TeamServices = require('../services/TeamServices.js');
 const TeamsController = require('../controllers/TeamsController.js');
 
@@ -28,7 +28,7 @@ function configureMulter() {
 
 function configureMainDatabase() {
     const db = new SqliteDatabase(
-        process.env.SQL_DB_PATH,
+        process.env.SQLITE_DB_PATH,
         { verbose: console.log },
     );
     return db;
@@ -51,7 +51,7 @@ function addCommonDefinitions(container) {
 
 function addTeamsDefinitions(container) {
     container.add({
-        teamsRepository: object(TeamsRepositoryJson).construct(use('MainDatabase')),
+        teamsRepository: object(TeamsRepositorySqlite).construct(use('MainDatabase')),
         teamsServices: object(TeamServices).construct(use('teamsRepository')),
         teamsController: object(TeamsController).construct(
             use('teamsServices'),
